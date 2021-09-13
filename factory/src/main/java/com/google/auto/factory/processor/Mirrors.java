@@ -22,7 +22,7 @@ import java.lang.annotation.Annotation;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
-import javax.inject.Provider;
+import javax.inject.Provider2;
 import javax.lang.model.element.AnnotationMirror;
 import javax.lang.model.element.AnnotationValue;
 import javax.lang.model.element.Element;
@@ -53,9 +53,9 @@ final class Mirrors {
             null);
   }
 
-  /** {@code true} if {@code type} is a {@link Provider}. */
+  /** {@code true} if {@code type} is a {@link Provider2}. */
   static boolean isProvider(TypeMirror type) {
-    return MoreTypes.isType(type) && MoreTypes.isTypeOf(Provider.class, type);
+    return MoreTypes.isType(type) && MoreTypes.isTypeOf(Provider2.class, type);
   }
 
   /**

@@ -53,8 +53,8 @@ import java.util.Optional;
 import java.util.stream.Stream;
 import javax.annotation.processing.Filer;
 import javax.annotation.processing.ProcessingEnvironment;
-import javax.inject.Inject;
-import javax.inject.Provider;
+import javax.inject.Inject2;
+import javax.inject.Provider2;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.AnnotationMirror;
 import javax.lang.model.element.Element;
@@ -123,7 +123,7 @@ final class FactoryWriter {
 
   private void addConstructorAndProviderFields(
       TypeSpec.Builder factory, FactoryDescriptor descriptor) {
-    MethodSpec.Builder constructor = constructorBuilder().addAnnotation(Inject.class);
+    MethodSpec.Builder constructor = constructorBuilder().addAnnotation(Inject2.class);
     if (descriptor.publicType()) {
       constructor.addModifiers(PUBLIC);
     }
@@ -131,7 +131,7 @@ final class FactoryWriter {
     for (int argumentIndex = 1; providerFields.hasNext(); argumentIndex++) {
       ProviderField provider = providerFields.next();
       TypeName typeName = resolveTypeName(provider.key().type().get()).box();
-      TypeName providerType = ParameterizedTypeName.get(ClassName.get(Provider.class), typeName);
+      TypeName providerType = ParameterizedTypeName.get(ClassName.get(Provider2.class), typeName);
       factory.addField(providerType, provider.name(), PRIVATE, FINAL);
       if (provider.key().qualifier().isPresent()) {
         // only qualify the constructor parameter

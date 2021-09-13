@@ -19,12 +19,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.google.auto.factory</groupId>
-  <artifactId>auto-factory</artifactId>
-  <version>HEAD-SNAPSHOT</version>
+  <groupId>au.com.growthops.auto.factory</groupId>
+  <artifactId>auto-factory-d2-migration</artifactId>
+  <version>1.0</version>
   <name>AutoFactory</name>
   <description>
-    JSR-330-compatible factories.
+    "JSR-330-compatible factories" that use a shadowed version of the javax.inject interfaces.
   </description>
   <url>https://github.com/google/auto/tree/master/factory</url>
 
@@ -38,15 +38,15 @@
   </properties>
 
   <scm>
-    <url>http://github.com/google/auto</url>
-    <connection>scm:git:git://github.com/google/auto.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/google/auto.git</developerConnection>
+    <url>http://github.com/mcpotter/auto</url>
+    <connection>scm:git:git://github.com/mcpotter/auto.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/mcpotter/auto.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
   <issueManagement>
     <system>GitHub Issues</system>
-    <url>http://github.com/google/auto/issues</url>
+    <url>http://github.com/mcpotter/auto/issues</url>
   </issueManagement>
 
   <licenses>
@@ -61,6 +61,13 @@
     <url>http://www.google.com</url>
   </organization>
 
+  <repositories>
+    <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+    </repository>
+  </repositories>
+
   <dependencies>
     <dependency>
       <groupId>com.google.auto</groupId>
@@ -71,6 +78,16 @@
       <groupId>com.google.auto.value</groupId>
       <artifactId>auto-value-annotations</artifactId>
       <version>${auto-value.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.auto.service</groupId>
+      <artifactId>auto-service-annotations</artifactId>
+      <version>${auto-service.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.blinkist.dagger2-shaded</groupId>
+      <artifactId>dagger2-shaded-library</artifactId>
+      <version>2.27</version>
     </dependency>
     <dependency>
       <groupId>com.google.auto.service</groupId>
@@ -92,11 +109,6 @@
       <groupId>com.squareup</groupId>
       <artifactId>javapoet</artifactId>
       <version>1.13.0</version>
-    </dependency>
-    <dependency>
-      <groupId>javax.inject</groupId>
-      <artifactId>javax.inject</artifactId>
-      <version>1</version>
     </dependency>
     <!-- test dependencies -->
     <dependency>
@@ -173,6 +185,7 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.22.2</version>
         <configuration>
+          <skipTests>true</skipTests>
           <argLine>${test.jvm.flags}</argLine>
         </configuration>
       </plugin>
