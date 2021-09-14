@@ -85,9 +85,9 @@
       <version>${auto-service.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.github.blinkist.dagger2-shaded</groupId>
-      <artifactId>dagger2-shaded-library</artifactId>
-      <version>2.27</version>
+      <groupId>com.github.growthops-digital</groupId>
+      <artifactId>javax-inject-2</artifactId>
+      <version>1</version>
     </dependency>
     <dependency>
       <groupId>com.google.auto.service</groupId>
